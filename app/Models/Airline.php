@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Airline extends Model
@@ -11,10 +12,13 @@ class Airline extends Model
     use HasFactory, SoftDeletes;
 
     protected $filltable = [
-        'iata_code',
+        'code',
         'name',
-        'image',
-        'city',
-        'country',
+        'logo',
        ];
+
+       public function flights()
+       {
+        return $this->HasMany(Flight::class);
+       }
 }

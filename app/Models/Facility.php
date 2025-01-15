@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Facility extends Model
 {
-   use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-   protected $filltable = [
-    'image',
-    'name',
-    'description',
-];
+    protected $filltable = [
+        'image',
+        'name',
+        'description',
+    ];
+
+    public function classes()
+    {
+        return $this->belongsToMany(FlightClass::class, 'flight_class_facility', 'facility_id', 'flight_class_id');
+    }
 }
