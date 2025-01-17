@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PromoCode extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $filltable = [
+    protected $fillable = [
         'code',
         'discount_type',
         'discount',

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class FlightClass extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $filltable = [
+    protected $fillable = [
         'flight_id',
         'class_type',
         'price',

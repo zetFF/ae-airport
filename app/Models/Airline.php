@@ -11,7 +11,7 @@ class Airline extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $filltable = [
+    protected $fillable = [
         'code',
         'name',
         'logo',

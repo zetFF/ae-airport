@@ -10,7 +10,7 @@ class Airport extends Model
 {
    use HasFactory, SoftDeletes;
 
-   protected $filltable = [
+   protected $fillable = [
     'iata_code',
     'name',
     'image',

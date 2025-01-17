@@ -10,7 +10,7 @@ class FlightSegment extends Model
 {
    use HasFactory, SoftDeletes;
 
-   protected $filltable = [
+   protected $fillable = [
     'sequence',
     'flight_id',
     'airport_id',

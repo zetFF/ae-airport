@@ -10,7 +10,7 @@ class Facility extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $filltable = [
+    protected $fillable = [
         'image',
         'name',
         'description',

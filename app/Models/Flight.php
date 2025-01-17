@@ -12,7 +12,7 @@ class Flight extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $filltable = [
+    protected $fillable = [
         'flight_number',
         'airline_id'
     ];
