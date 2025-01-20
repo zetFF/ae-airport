@@ -14,6 +14,7 @@ class Facility extends Model
         'image',
         'name',
         'description',
+        'logo',
     ];
 
     public function classes()
