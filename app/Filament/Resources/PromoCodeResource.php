@@ -50,7 +50,7 @@ class PromoCodeResource extends Resource
                 Tables\Columns\TextColumn::make('discount_type'),
                 Tables\Columns\TextColumn::make('discount'),
                 Tables\Columns\TextColumn::make('valid_until'),
-                Tables\Columns\TextColumn::make('is_used'),
+                Tables\Columns\ToggleColumn::make('is_used'),
             ])
             ->filters([
                 //
