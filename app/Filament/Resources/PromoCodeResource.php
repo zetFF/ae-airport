@@ -17,28 +17,28 @@ class PromoCodeResource extends Resource
 {
     protected static ?string $model = PromoCode::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-ticket';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('code')
-                ->required(),
+                    ->required(),
                 Forms\Components\Select::make('discount_type')
-                ->required()
-                ->options([
-                    'fixed' => 'Fixed',
-                    'percentage' => 'Percentage'
-                ]),
+                    ->required()
+                    ->options([
+                        'fixed' => 'Fixed',
+                        'percentage' => 'Percentage'
+                    ]),
                 Forms\Components\TextInput::make('discount')
-                ->required()
-                ->numeric()
-                ->minValue(0),
+                    ->required()
+                    ->numeric()
+                    ->minValue(0),
                 Forms\Components\DateTimePicker::make('valid_until')
-                ->required(),
+                    ->required(),
                 Forms\Components\Toggle::make('is_used')
-                ->required(),
+                    ->required(),
             ]);
     }
 
@@ -48,7 +48,12 @@ class PromoCodeResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('code'),
                 Tables\Columns\TextColumn::make('discount_type'),
-                Tables\Columns\TextColumn::make('discount'),
+                Tables\Columns\TextColumn::make('discount')
+                    ->formatStateUsing(fn(PromoCode $record): string => match ($record->discount_type) {
+                        'fixed' => 'Rp' . number_format($record->discount, 0, ',', '.'),
+                        'percentage' => $record->discount . '%',
+                        default => '',
+                    }),
                 Tables\Columns\TextColumn::make('valid_until'),
                 Tables\Columns\ToggleColumn::make('is_used'),
             ])
