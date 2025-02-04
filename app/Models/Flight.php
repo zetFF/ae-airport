@@ -100,9 +100,9 @@ class Flight extends Model
         switch ($classType) {
             case 'business';
                 return 4;
-                case 'economy';
+            case 'economy';
                 return 6;
-                default:
+            default:
                 return 4;
         }
     }
